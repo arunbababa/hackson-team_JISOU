@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MainDashboard.css';
-import alarmSound from '../assets/alarm.mp3'; // 追加
+import alarmSound from '../assets/alarm_1hour.mp3'; // 追加
 
 // 型定義
 interface AlarmSettings {
