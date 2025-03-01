@@ -1,7 +1,8 @@
 // src/screens/MainDashboard.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MainDashboard.css';
+import alarmSound from '../assets/alarm.mp3'; // 追加
 
 // 型定義
 interface AlarmSettings {
@@ -36,6 +37,7 @@ const MainDashboard: React.FC = () => {
     },
     difficulty: 'medium',
   });
+  const alarmAudio = useRef(new Audio(alarmSound)); // 追加
   
   // 時間を更新する効果
   useEffect(() => {
@@ -80,7 +82,8 @@ const MainDashboard: React.FC = () => {
     const currentMinutes = now.getMinutes();
     
     if (currentHours === alarmHours && currentMinutes === alarmMinutes) {
-      // アラーム時間になったら問題画面に遷移
+      // アラーム時間になったら音を再生し、問題画面に遷移
+      alarmAudio.current.play(); // 追加
       navigate('/question');
     }
   };
