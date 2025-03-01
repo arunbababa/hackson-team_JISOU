@@ -20,7 +20,8 @@ interface AlarmSettings {
   difficulty: 'easy' | 'medium' | 'hard';
 }
 
-const MainDashboard: React.FC = () => {
+const MainDashboard: React.FC<{ alarmAudio: React.RefObject<HTMLAudioElement> }> = ({ alarmAudio }) => {
+  // 既存のコード...
   const navigate = useNavigate();
   const [currentTime, setCurrentTime] = useState<string>('');
   const [alarmSettings, setAlarmSettings] = useState<AlarmSettings>({
@@ -37,6 +38,12 @@ const MainDashboard: React.FC = () => {
     },
     difficulty: 'medium',
   });
+
+  const stopAlarm = () => {
+  alarmAudio.current.pause();
+  alarmAudio.current.currentTime = 0;
+};
+
   const alarmAudio = useRef(new Audio(alarmSound)); // 追加
   
   // 時間を更新する効果

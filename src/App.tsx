@@ -1,13 +1,19 @@
-// src/App.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainDashboard from './screens/MainDashboard';
 import Question from './screens/Question';
 import Settings from './screens/Settings';
 import './App.css';
+import alarmSound from './assets/alarm_1hour.mp3';
 
 function App() {
-  // アプリの初期設定を行う
+  const alarmAudio = useRef(new Audio(alarmSound));
+
+  const stopAlarm = () => {
+    alarmAudio.current.pause();
+    alarmAudio.current.currentTime = 0;
+  };
+
   useEffect(() => {
     // ローカルストレージからアラーム設定を読み込む
     const loadAlarmSettings = () => {
@@ -54,8 +60,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainDashboard />} />
-        <Route path="/question" element={<Question />} />
+        <Route path="/" element={<MainDashboard alarmAudio={alarmAudio} />} />
+        <Route path="/question" element={<Question stopAlarm={stopAlarm} />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
