@@ -1,0 +1,140 @@
+/* Question.css */
+.question-screen {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.timer {
+  background-color: #f0f3ff;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.question-container {
+  background-color: #f0f3ff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.question-container h2 {
+  color: #4a6bff;
+  margin-top: 0;
+  text-align: center;
+}
+
+.question-text {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+}
+
+.option:hover {
+  background-color: #e6eaff;
+}
+
+.option.correct {
+  background-color: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+.option.incorrect {
+  background-color: #F44336;
+  color: white;
+  border-color: #F44336;
+}
+
+.result-message {
+  background-color: #f0f3ff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+}
+
+.correct-message h3,
+.incorrect-message h3,
+.timeout-message h3 {
+  margin-top: 0;
+}
+
+.correct-message h3 {
+  color: #4CAF50;
+}
+
+.incorrect-message h3,
+.timeout-message h3 {
+  color: #F44336;
+}
+
+.stop-button,
+.retry-button {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.stop-button {
+  background-color: #4a6bff;
+  color: white;
+}
+
+.stop-button:hover {
+  background-color: #3a5bff;
+}
+
+.retry-button {
+  background-color: #F44336;
+  color: white;
+}
+
+.retry-button:hover {
+  background-color: #E53935;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #4a6bff;
+}
+
+/* Animation for timer when time is running low */
+@keyframes pulse {
+  0% { background-color: #f0f3ff; }
+  50% { background-color: #ffdbdb; }
+  100% { background-color: #f0f3ff; }
+}
+
+.timer.low {
+  animation: pulse 1s infinite;
+  color: #F44336;
+}
